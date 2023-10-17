@@ -1,4 +1,10 @@
-const TodoList = () => {
+import { ITask } from "../../tasks";
+
+interface ITodoListProps {
+  tasks: ITask[];
+}
+
+const TodoList: React.FC<ITodoListProps> = ({ tasks }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -11,10 +17,12 @@ const TodoList = () => {
         </thead>
         <tbody>
           {/* rows */}
-          <tr>
-            <td>Cy Ganderton</td>
-            <td>Blue</td>
-          </tr>
+          {tasks.map((task) => (
+            <tr key={task.id}>
+              <td>{task.text}</td>
+              <td>some</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
